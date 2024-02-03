@@ -1,12 +1,13 @@
 
 import express from 'express'
-import { search } from './spotify_api'
 import searchRoute from './routes/search.route'
+import playlistRoute from './routes/playlist.route'
 import userRoute from './routes/user.route'
-
-import User from './models/User'
+import cors from 'cors'
+import Playlist from './models/Playlist'
 const app = express()
 app.use(express.json())
+app.use(cors())
 
 app.get("/", async(req, res) => {
     // const results = await search("Left for")
@@ -15,6 +16,8 @@ app.get("/", async(req, res) => {
 
 app.use("/search", searchRoute)
 app.use("/auth", userRoute)
+app.use("/playlists", playlistRoute)
+
 
 app.listen(5000, async() => {
     console.log("Listening on port 5000")

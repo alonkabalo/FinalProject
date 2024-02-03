@@ -1,7 +1,8 @@
 import mongoose from 'mongoose'
 
 const UserSchema = new mongoose.Schema({
-    image: { type:String, required:false },
+    image: { type:String, required:false,
+      default:"https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG.png" },
     name: { type: String, required: true },
     email: { 
         type: String,
@@ -23,7 +24,9 @@ const UserSchema = new mongoose.Schema({
         enum: ['admin', 'artist', 'user'],
         default: "user"
     },
-    likes: [{type: String}]
+   // prefrences_genres: []
+    favorites:[{type:String}],
+    playlists: [{type: mongoose.Schema.Types.ObjectId, ref: "playlists"}]
 })
 
 const User = mongoose.model("users", UserSchema)

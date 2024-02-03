@@ -2,10 +2,27 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import '@radix-ui/themes/styles.css';
+import { Theme } from '@radix-ui/themes';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
+import { ShareContextProvider } from './context/ShareContext';
+import { PlaylistsContextProvider } from './context/PlaylistsContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-    <App />
+   <Theme>
+    <Provider store={store}>
+      <BrowserRouter>
+      <ShareContextProvider>
+        <PlaylistsContextProvider>
+          <App />
+        </PlaylistsContextProvider>
+      </ShareContextProvider>
+      </BrowserRouter>
+     </Provider>
+    </Theme>
 );

@@ -1,4 +1,18 @@
+
+@font-face {
+  font-family: Montserrat;
+  src: url(./assets/fonts/Mono/static/Montserrat-Regular.ttf);
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(./assets/fonts/Mono/static/Montserrat-Bold.ttf);
+  font-weight: bold;
+}
+
 body {
+  padding:0;
+  height:100%;
+  min-height: 100%;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -7,7 +21,61 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html  {
+  height:100%;
+}
+#root {
+  height:100% ;
+}
+* {
+  font-family: Montserrat;
+  box-sizing: border-box;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+.basic-form {
+  display: flex;
+  flex-direction: column;
+  margin-block: 1rem;
+  gap:1rem;
+  max-width: 500px;
+  margin-inline: auto;
+}
+.basic-form  div {
+  display: flex;
+  font-size: 18px;
+  gap:.25rem;
+  flex-direction: column;
+}
+.basic-form  div input {
+  padding: 1rem;
+  border: 1px solid lightgray;
+  outline: none;
+  color:white;
+  border-radius: 4px;
+  background-color: transparent;
+}
+.basic-form button {
+  background-color: #1BD760;
+  color:black;
+  font-weight: bold;
+  padding: 1rem;
+  font-size:24px;
+  border-radius: 100px;
+}
+.error {
+  color:red;
+  font-size: 12px;
+}
+.loading {
+  background-color:rgb(125, 125, 125) !important; 
+}
+
+.blue-gradient {
+  border-radius:1rem;
+  background-image: linear-gradient(45deg,#4b6cb7,#182848);
 }
