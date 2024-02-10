@@ -24,10 +24,12 @@ export type TPlaylist = {
 }
 
 export type User = { 
+  _id:string,
   name:string,
   password:string, 
   email:string,
   image:string, 
+  userType:string
   playlists: TPlaylist[],
   favorites: string[]  }
 export interface Artist {

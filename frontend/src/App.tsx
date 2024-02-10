@@ -25,6 +25,8 @@ import AddPlaylistsDialog from './components/AddPlayListDialog/AddPlaylistsDialo
 import PlaylistListPage from './pages/playlists';
 import PlaylistPage from './pages/playlist';
 import Profile from './pages/auth/Profile';
+import AboutPage from './pages/about/About';
+import UserManagementPage from './pages/management/UserManagementPage';
 
 
 const no_padding_pages = [
@@ -41,8 +43,6 @@ const isNoPaddingPage = (path:string) => {
 function App() {
 
   const token = useSelector<RootState, Maybe<string>>(state => state.userSlice.token)
-
-  const albums =  useSelector<RootState, Maybe<SpotifySearch.AlbumSearch.SearchResults>>(state => state.spotifySearchSlice.albums)
 
   const dispatch = useDispatch<AppDispatch>()
   const location = useLocation()
@@ -77,11 +77,14 @@ function App() {
               <Route path='signup' element={<SignUpPage/>}/>
               <Route path='profile' element={<Profile/>}/>
             </Route>
+
+            <Route path="/user-management" element={<UserManagementPage/>}/>
             <Route path='/search' element={<SearchPage/>}/>
+            <Route path='/about' element={<AboutPage/>}/>
             <Route path='/favorites' element={<FavoritesPage/>}/>
             <Route path='/playlists' element={<PlaylistListPage/>}/>
             <Route path='/playlist/:playListId' element={<PlaylistPage/>}/>
-            <Route path='/albums/:albumId' element={<AlbumPage/>}/>
+            <Route path='/albums/:albumId/:word' element={<AlbumPage/>}/>
             <Route path="*" element={<NotFound/>}/>
           </Routes>
         </Page>

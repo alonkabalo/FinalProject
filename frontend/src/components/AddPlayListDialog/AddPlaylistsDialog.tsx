@@ -23,7 +23,7 @@ const AddPlaylistsDialog = () => {
             Create new playlist
         </AlertDialog.Title>
         <AlertDialog.Description className="AlertDialogDescription">
-         <input ref={ref} required placeholder='Enter playlist name'/>
+         <input ref={ref} className='playlist-name-input' required placeholder='Enter playlist name'/>
         </AlertDialog.Description>
         <div style={{ display: 'flex', gap: 25, justifyContent: 'flex-end' }}>
           <AlertDialog.Cancel asChild>

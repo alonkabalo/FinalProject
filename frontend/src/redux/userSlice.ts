@@ -165,6 +165,7 @@ export const userSlice = createSlice({
         builder.addCase(getUser.fulfilled, (state, action) => {
             state.loading = false
             state.user = action.payload
+
             message.success(`Signed in as ${action.payload?.name}`)
             state.error = undefined
         })

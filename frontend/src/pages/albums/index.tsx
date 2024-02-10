@@ -9,10 +9,10 @@ import AlbumTracksTable from "../../components/AlbumsTracksTable/AlbumTracksTabl
 
 
 export default function AlbumPage() {
-    const { albumId } = useParams()
+    const { albumId, word } = useParams()
     const tracks = useSelector<RootState, Maybe<AlbumTracks.Tracks>>(state => state.spotifySearchSlice.albumTracks[albumId!])
 
-    const album = useAlbum({ albumId })
+    const album = useAlbum({ albumId,word })
     const nav = useNavigate()
     const dispatch = useDispatch<AppDispatch>()
    

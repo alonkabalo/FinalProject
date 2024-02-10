@@ -8,6 +8,14 @@ button {
   all: unset;
 }
 
+
+.playlist-row {
+  border-radius: 1rem;
+  margin-block: 1rem;
+  padding-inline: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
 .AlertDialogOverlay {
   background-color: var(--black-a9);
   position: fixed;

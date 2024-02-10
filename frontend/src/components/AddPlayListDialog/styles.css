@@ -8,6 +8,16 @@ button {
   all: unset;
 }
 
+.playlist-name-input {
+  border: 1px solid #1DB954 !important;
+  outline: 1px solid #1DB954 !important;
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 9999px;
+  color:white;
+  min-width: 250px;
+  padding:1rem;
+}
+
 .AlertDialogOverlay {
   background-color: var(--black-a9);
   position: fixed;

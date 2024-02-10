@@ -18,3 +18,21 @@ export async function listAllUsers(req: Request, res: Response) {
         })
     }
 }
+
+export async function deleteUser(req: Request, res: Response) {
+    try {
+        const id  = req.params.userId
+        const user = await User.findByIdAndDelete(id)
+        res.status(200).json({
+            message: "User deleted succesfuly",
+            status: 200,
+            data: user
+        })
+    } catch(e:any) {
+        res.status(400).json({
+            message:e.message,
+            status: 400,
+            data: null
+        })
+    }
+}

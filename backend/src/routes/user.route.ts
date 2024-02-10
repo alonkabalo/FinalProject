@@ -5,7 +5,7 @@ import { authMiddleware } from '../middleware/authMiddleware'
 const route = express.Router()
 
 route.post("/signUp", userController.signup )
-route.patch("/like/:id", userController.like)
+route.patch("/like/:id",authMiddleware, userController.like)
 route.post("/signIn",userController.signIn)
 
 route.put("/", authMiddleware, userController.updateUser)

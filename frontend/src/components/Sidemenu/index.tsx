@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import styled from '@emotion/styled'
 import { useUser } from "../../redux/userSlice";
 import { ListBulletIcon } from '@radix-ui/react-icons'
+import { isAdmin } from "../../utils";
 
 const SideMenuStyled = styled(Grid)`
     position:absolute;
@@ -47,14 +48,14 @@ export default function SideMenu() {
                 <Flex className="inner" direction={'column'} align={'start'} gap={'4'}>
                     <Flex direction={'row'} gap={'3'} align={'center'}>
                         <i className="fas fa-normal fa-house"></i>
-                        <Link className="link" to="/">Home page</Link>
+                        <Link className="link" to="/">Home</Link>
                     </Flex>
 
                     <Flex direction={'row'} gap={'3'} align={'center'}>
                         <i className="fas fa-normal fa-search"></i>
-                        <Link className="link" to="/search">Search page</Link>
+                        <Link className="link" to="/search">Search</Link>
                     </Flex>
-
+                    
                     
                     {user  && <>
                     
@@ -67,7 +68,23 @@ export default function SideMenu() {
                             <Link className="link" to="/playlists">Playlists</Link>
                         </Flex>
                     </>}
+
+                    <Flex direction={'row'} gap={'3'} align={'center'}>
+                        <i className="fas fa-normal fa-book"></i>
+                        <Link className="link" to="/about">About</Link>
+                    </Flex>
+
+                    {isAdmin(user) && 
+                    <>
+                     <hr className="separator"/>   
+                    <Flex direction={'column'} gap={'3'} align={'center'}>
+                        <b style={{color:'white'}}>
+                         Management
+                        </b>
+                        <Link className="link" to="/user-management" style={{fontSize:'14px'}}>Manage users</Link>
+                    </Flex></> }
                 </Flex>
+                
             </Box>
 
             <Box className="bottom">

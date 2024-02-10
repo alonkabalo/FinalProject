@@ -9,7 +9,7 @@ export default function PlaylistsHeader() {
         <p className="album-name">
             Playlists
         </p>
-        <div className="blue-gradient">
+        <div className="purple-gradient">
           <ListBulletIcon color="white" style={{width:'100%',height:'100%'}}/>
         </div>
     </AlbumHeaderStyle>

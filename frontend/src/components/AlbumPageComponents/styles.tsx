@@ -9,7 +9,9 @@ export const AlbumHeaderStyle = styled(Grid)`
     margin-block:1rem;
     margin-inline:1rem;
     padding-inline:5rem;
-    .blue-gradient {
+    .blue-gradient,
+    .purple-gradient,
+    .gold-gradient {
         height:200px;
 
         i {

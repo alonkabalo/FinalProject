@@ -53,10 +53,6 @@ export default function TracksTablePlaylist() {
             </Table.Cell>
 
             <Table.Cell  className="track-album">
-                TODO
-            </Table.Cell>
-
-            <Table.Cell  className="track-album">
                 <Seconds  millis={track.duration_ms}/>
             </Table.Cell>
 
@@ -101,10 +97,6 @@ export default function TracksTablePlaylist() {
 
                         <TableHeaderCell>
                             Album
-                        </TableHeaderCell>
-
-                        <TableHeaderCell>
-                            Release date
                         </TableHeaderCell>
 
                         <TableHeaderCell>

@@ -24,7 +24,9 @@ const PlaylistsDialog = () => {
         <AlertDialog.Description className="AlertDialogDescription">
            {user && React.Children.toArray(
             user.playlists?.map(playlist => <Flex
-            style={{background: playlist._id === selectedPlaylist?._id ? 'gray' : 'black'} }
+           
+            style={{background: playlist._id === selectedPlaylist?._id ? '#1DB954' : 'black'} }
+            className='playlist-row'
             onClick={() => setSelectedPlaylist(playlist)}>
               <p>{playlist.name}</p>
             </Flex>)

@@ -8,21 +8,21 @@ import { useEffect, useState } from "react"
 
 
 export type SpotifySlice = {
-    albums: SpotifySearch.AlbumSearch.SearchResults | undefined
+    albums:Record<string,  SpotifySearch.AlbumSearch.SearchResults | undefined>,
     albumTracks:  Record<string,  AlbumTracks.Tracks>
     loading:boolean,
     error: string | undefined
 }
 
 const initialState: SpotifySlice = {
-    albums: undefined,
+    albums: {},
     loading: false,
     albumTracks: {},
     error: undefined
 }
 
-export const useAlbum = ({albumId} : {albumId:string | undefined}) => {
-    const albumsSearch =  useSelector<RootState, Maybe<SpotifySearch.AlbumSearch.SearchResults>>(state => state.spotifySearchSlice.albums)
+export const useAlbum = ({albumId, word} : {albumId:string | undefined, word:string | undefined}) => {
+    const albumsSearch =  useSelector<RootState, Record<string,Maybe<SpotifySearch.AlbumSearch.SearchResults>>>(state => state.spotifySearchSlice.albums)
     
     const [album, setAlbum] = useState<SpotifySearch.AlbumSearch.Item | undefined>()
     const getId = (uri:string) => {
@@ -34,7 +34,8 @@ export const useAlbum = ({albumId} : {albumId:string | undefined}) => {
     useEffect(() => {
 
         const fetchAlbum = async () => {
-            const existingAlbum = albumsSearch?.albums?.items.find(album => getId(album.data.uri) === albumId)
+            if(!word)return
+            const existingAlbum = albumsSearch[word]?.albums.items.find(album => getId(album.data.uri) === albumId)
             if(existingAlbum)
                 setAlbum(existingAlbum)
             else {
@@ -46,7 +47,7 @@ export const useAlbum = ({albumId} : {albumId:string | undefined}) => {
         if(albumId)
             fetchAlbum()
                 
-    },[albumId])
+    },[albumId,word])
     return album 
 }
 
@@ -54,11 +55,17 @@ export const searchAlbumsAction = createAsyncThunk('spotifySearch/searchAlbums',
     async (query:string) => {
         const existingAlbums = localStorage.getItem(`albums/${query}`)
         if(existingAlbums) {
-            return JSON.parse(existingAlbums) as SpotifySearch.AlbumSearch.SearchResults
+            return {
+                query,
+                albums: JSON.parse(existingAlbums) as SpotifySearch.AlbumSearch.SearchResults
+            }
         }
         const albums = await searchAlbums(query)
         localStorage.setItem(`albums/${query}`, JSON.stringify(albums))
-        return albums
+        return {
+            query,
+            albums
+        }
 })
 
 export const getAlbumTracksAction = createAsyncThunk('spotifySearch/getAlbumTracks',
@@ -88,19 +95,22 @@ export const spotifySearchSlice = createSlice({
     extraReducers:  (builder) => {
         builder.addCase(searchAlbumsAction.pending, (state) => {
             state.loading = true
-            state.albums = undefined
+           // state.albums = undefined
             state.error = undefined
         })
         builder.addCase(searchAlbumsAction.rejected, (state, action) => {
             state.loading = false
-            state.albums = undefined
+            //state.albums = undefined
             state.error = action.error.message
 
             message.error(action.error.message)
         })
         builder.addCase(searchAlbumsAction.fulfilled, (state, action) => {
             state.loading = false
-            state.albums = action.payload
+            state.albums = {
+                ...state.albums,
+                [action.payload.query]: action.payload.albums
+            }
             state.error = undefined
         })
 

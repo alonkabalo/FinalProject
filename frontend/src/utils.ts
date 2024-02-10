@@ -1,4 +1,4 @@
-import { ServerResponse } from "./@Types"
+import { Maybe, ServerResponse, User } from "./@Types"
 
 
 export function isErrorResponse<T> (response :ServerResponse<T>) {
@@ -10,6 +10,8 @@ export function isErrorResponse<T> (response :ServerResponse<T>) {
 }
 export const wait = () => new Promise((resolve) => setTimeout(resolve, 3000))
 
+
+export const isAdmin = (user: Maybe<User>) => user?.userType === 'admin'
  
 export function debounce<T, U>(f: (whatever: U) => Promise<T>, delay:number= 2000) {
 

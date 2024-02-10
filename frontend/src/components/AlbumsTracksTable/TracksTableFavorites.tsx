@@ -51,9 +51,6 @@ export default function TracksTableFavorites() {
      
             </Table.Cell>
 
-            <Table.Cell className="track-album">
-                TODO
-            </Table.Cell>
 
             <Table.Cell className="track-album">
                 <Seconds  millis={track.duration_ms}/>
@@ -87,9 +84,6 @@ export default function TracksTableFavorites() {
                             Album
                         </TableHeaderCell>
 
-                        <TableHeaderCell>
-                            Release date
-                        </TableHeaderCell>
 
                         <TableHeaderCell>
                             Duration

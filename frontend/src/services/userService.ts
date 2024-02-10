@@ -21,6 +21,28 @@ export async function me() {
         .then((response) => JSON.parse(response.data) as ServerResponse<User>)
 }
 
+
+export async function allUsers() {
+    return httpClient.get("admin/allUsers")
+        .then((response) => {
+            try { return JSON.parse(response.data) as ServerResponse<User[]>} 
+            catch (e){
+                throw response.data
+            }
+        })
+}
+
+export async function deleteUser(id: string) {
+    return httpClient.delete(`admin/deleteUser/${id}`)
+        .then((response) => {
+            try { return JSON.parse(response.data) as ServerResponse<User>} 
+            catch (e){
+                throw response.data
+            }
+        })
+}
+
+
 export async function likeTrack(id: string) {
     return httpClient.patch(`auth/like/${id}`)
         .then((response) => {

@@ -51,4 +51,10 @@ Explore and interact with the Spotify clone app. Enjoy features like liking/unli
 
 Feel free to contribute, report issues, or suggest improvements!
 
+
+## Admin Account
+For an admin account please use
+email: alon@walla.com
+password: 123456
+
 Happy listening!

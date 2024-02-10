@@ -120,10 +120,6 @@ export default function AlbumTracksTable({tracks, album} : AlbumTracksTableProps
             </Table.Cell>
 
             <Table.Cell className="track-album">
-                TODO
-            </Table.Cell>
-
-            <Table.Cell className="track-album">
                 <Seconds  millis={trackData.track.duration.totalMilliseconds}/>
             </Table.Cell>
             <Table.Cell className="like-cell track-album">
@@ -154,10 +150,6 @@ export default function AlbumTracksTable({tracks, album} : AlbumTracksTableProps
 
                         <TableHeaderCell>
                             Album
-                        </TableHeaderCell>
-
-                        <TableHeaderCell>
-                            Release date
                         </TableHeaderCell>
 
                         <TableHeaderCell>

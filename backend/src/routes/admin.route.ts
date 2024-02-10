@@ -6,5 +6,6 @@ import { authMiddleware } from '../middleware/authMiddleware'
 const route = express.Router()
 
 route.get("/allUsers", authMiddleware, adminMiddleware, adminController.listAllUsers)
+route.delete("/deleteUser/:userId", authMiddleware, adminMiddleware, adminController.deleteUser)
 
 export default route

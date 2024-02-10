@@ -3,3 +3,14 @@
     overflow-x:hidden;
     color:white;
 }
+
+.separator {
+    height: 0.01cm;
+    width: 100%;
+    background-color: lightgray;
+    border: none;
+}
+
+.header-home {
+    color:white !important;
+}
